@@ -3,8 +3,6 @@ import User from '../models/User.js'
 import Post from '../models/Post.js'
 import { CustomError } from '../customError/customError.js'
 
-import checkIfCreatorOfResource from '../utils/checkIfCreatorofResource.js'
-
 import mongoose from 'mongoose'
 
 const addComment = async (req, res) => {
@@ -88,7 +86,8 @@ const deleteComment = async (req, res) => {
 
   if (!comment) throw new CustomError('No comment with such id', 404)
 
-  checkIfCreatorOfResource(req.userId, comment.createdBy)
+  if (req.userId !== comment.createdBy.toString())
+    throw new CustomError('Unauthorized access', 401)
 
   await comment.remove()
 

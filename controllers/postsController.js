@@ -1,7 +1,6 @@
 import User from '../models/User.js'
 import Post from '../models/Post.js'
 import { CustomError } from '../customError/customError.js'
-import checkIfCreatorOfResource from '../utils/checkIfCreatorofResource.js'
 
 const createPost = async (req, res) => {
   if (!req.body.title || !req.body.content)
@@ -26,7 +25,8 @@ const deletePost = async (req, res) => {
 
   if (!post) throw new CustomError('No post with such id', 404)
 
-  checkIfCreatorOfResource(req.userId, post.createdBy)
+  if (req.userId !== comment.createdBy.toString())
+    throw new CustomError('Unauthorized access', 401)
 
   await post.remove()
 
@@ -95,7 +95,8 @@ const updatePost = async (req, res) => {
   if (!post) throw new CustomError('No post with such id', 404)
 
   // check if user is author of the post
-  checkIfCreatorOfResource(req.userId, post.createdBy)
+  if (req.userId !== comment.createdBy.toString())
+    throw new CustomError('Unauthorized access', 401)
 
   if (req.body.title && req.body.content) {
     // a) ---normal post edit---
