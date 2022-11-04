@@ -25,7 +25,7 @@ const deletePost = async (req, res) => {
 
   if (!post) throw new CustomError('No post with such id', 404)
 
-  if (req.userId !== comment.createdBy.toString())
+  if (req.userId !== post.createdBy.toString())
     throw new CustomError('Unauthorized access', 401)
 
   await post.remove()
@@ -95,7 +95,7 @@ const updatePost = async (req, res) => {
   if (!post) throw new CustomError('No post with such id', 404)
 
   // check if user is author of the post
-  if (req.userId !== comment.createdBy.toString())
+  if (req.userId !== post.createdBy.toString())
     throw new CustomError('Unauthorized access', 401)
 
   if (req.body.title && req.body.content) {
