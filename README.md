@@ -1,10 +1,10 @@
-# Bachelor's thesis - backend server
+# Internet Forum - backend server
 
 #### By _Łukasz Janyst_
 
 ## Description
 
-_Express server for internet forum web application. Frontend of the app --> https://github.com/lukasz789/praca-licencjacka-frontend-react_
+_Express server for internet forum web application. Frontend of the app --> https://github.com/lukasz789/Internet-Forum_
 
 ## Hosting
 
