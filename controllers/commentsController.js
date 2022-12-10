@@ -32,10 +32,6 @@ const upVoteComment = async (req, res) => {
   const comment = await Comment.findOne({ _id: req.params.commentId })
   if (!comment) throw new CustomError('No comment with such id', 404)
 
-  const wasCommentUpvoted = await Comment.find({
-    upvoters: req.userId,
-  })
-
   if (comment.upvoters.includes(req.userId.toString())) {
     throw new CustomError('Comment already upvoted', 400)
   }
