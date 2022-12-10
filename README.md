@@ -14,3 +14,6 @@ Server hosted on https://friendly-forum.adaptable.app/api.
 
 * _Express.js_
 * _MongoDB_
+* _REST_
+* _JWT_
+* _Bcrypt_
