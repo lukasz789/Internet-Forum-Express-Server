@@ -8,7 +8,7 @@ _Express server for internet forum web application. Frontend of the app --> http
 
 ## Hosting
 
-Server hosted on https://friendly-forum.adaptable.app/api. 
+// not hosted anymore
 
 ## Technology stack
 
